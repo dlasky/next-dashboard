@@ -1,9 +1,12 @@
-import styled from "@emotion/styled";
-import PropTypes from "prop-types";
+import styled, { StyledComponent } from "@emotion/styled";
 
-const Grid = styled("div")`
+interface Props {
+  cols?: number;
+}
+
+export const Grid = styled("div")<Props>`
   display: grid;
-  grid-template-columns: repeat(${props => props.cols}, 1fr);
+  grid-template-columns: repeat(${({ cols = 4 }) => cols}, 1fr);
   /* grid-gap: 20px; */
   column-gap: 20px;
 
@@ -17,23 +20,11 @@ const Grid = styled("div")`
     grid-template-columns: repeat(6, 20px 1fr);
   } */
 `;
-Grid.propTypes = {
-  cols: PropTypes.number
-};
 
-Grid.defaultProps = {
-  cols: 4
-};
-
-const Two = styled("div")`
+export const Two = styled("div")`
   grid-column: span 2;
 `;
 
-const Four = styled("div")`
+export const Four = styled("div")`
   grid-column: span 4;
 `;
-
-Grid.Two = Two;
-Grid.Four = Four;
-
-export default Grid;

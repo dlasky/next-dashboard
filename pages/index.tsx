@@ -1,6 +1,6 @@
-import Grid  from "../components/Grid"
-import styled from "@emotion/styled"
-import WorldClock from "../modules/WorldClock"
+import { Grid, Two, Four } from "../components/Grid";
+import styled from "@emotion/styled";
+import WorldClock from "../modules/WorldClock";
 
 const Content = styled("div")`
   font-family: "Rajdhani", sans-serif;
@@ -12,22 +12,20 @@ const Index = () => (
   <Content>
     {/* <Status /> */}
     <Grid>
-      <Grid.Two>
+      <Two>
         {/* <DateTime /> */}
         {/* <Holidays maxItems={5} /> */}
         {/* <Pollen /> */}
         {/* <Hue /> */}
-      </Grid.Two>
-      <Grid.Two>
-        {/*<R>
+      </Two>
+      <Two>{/*<R>
           <Weather />
-        </R>*/}
-      </Grid.Two>
-      <Grid.Four>
+        </R>*/}</Two>
+      <Four>
         <WorldClock />
-      </Grid.Four>
+      </Four>
     </Grid>
   </Content>
 );
 
-export default Index
+export default Index;

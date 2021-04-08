@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import { ReactChild, ReactElement } from "react";
 
 interface ColorProps {
-  dimmed?: boolean
-  normal?: boolean
-  bright?: boolean
+  dimmed?: boolean;
+  normal?: boolean;
+  bright?: boolean;
 }
 
 export const Colors = {
@@ -14,11 +14,11 @@ export const Colors = {
 };
 
 interface SizeProps {
-  xsmall?: boolean,
-  small?: boolean,
-  medium?: boolean,
-  large?: boolean,
-  xlarge?: boolean,
+  xsmall?: boolean;
+  small?: boolean;
+  medium?: boolean;
+  large?: boolean;
+  xlarge?: boolean;
 }
 
 export const FontSize = {
@@ -38,10 +38,10 @@ export const LineHeight = {
 };
 
 interface WeightProps {
-  thin?: boolean
-  light?: boolean
-  regular?: boolean
-  bold?: boolean
+  thin?: boolean;
+  light?: boolean;
+  regular?: boolean;
+  bold?: boolean;
 }
 
 export const Weight = {
@@ -63,7 +63,7 @@ export const Header = styled("div")`
   color: ${Colors.normal};
 `;
 
-const matchProps = (props = {}, opts = {}) : string => {
+const matchProps = (props = {}, opts = {}): string => {
   const k = Object.keys(props).find((p) => opts.hasOwnProperty(p));
   return k ? opts[k] : "";
 };
@@ -87,7 +87,7 @@ export const Div = styled("div")<ColorProps & WeightProps & SizeProps>`
 `;
 
 interface SupProps {
-  width?: number
+  width?: number;
 }
 
 export const Sup = styled("sup")<SupProps & ColorProps>`
@@ -113,9 +113,9 @@ export const Layer = styled(Div)`
 `;
 
 interface GridProps {
-  cols?: string
-  gap?: number | string
-  children?: ReactElement[]
+  cols?: string;
+  gap?: number | string;
+  children?: ReactElement[];
 }
 
 export const Grid = styled("div")<GridProps>`

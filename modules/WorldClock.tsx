@@ -18,15 +18,29 @@ const renderTimePart = ({ type, value }) => {
     case "literal":
       return value === " " ? null : value;
     case "dayPeriod":
-      return (
-        <Sup key="dp">
-          {value}
-        </Sup>
-      );
+      return <Sup key="dp">{value}</Sup>;
   }
 };
 
-const WorldClock = ({ locations }) => {
+const defs = [
+  { name: "San Fran", zone: "America/Los_Angeles" },
+  { name: "Denver", zone: "America/Denver" },
+  { name: "Chicago", zone: "America/Chicago" },
+  { name: "NYC", zone: "America/New_York" },
+  { name: "London", zone: "Europe/London" },
+  { name: "Bangkok", zone: "Asia/Bangkok" },
+];
+
+interface LocationProps {
+  name: string;
+  zone: string;
+}
+
+interface Props {
+  location: LocationProps[];
+}
+
+const WorldClock = ({ locations = defs }) => {
   const { time } = useRefresh(1000);
   const local = DateTime.fromMillis(time);
   return (
@@ -50,17 +64,5 @@ const WorldClock = ({ locations }) => {
     </Container>
   );
 };
-
-WorldClock.defaultProps = {
-  locations: [
-    { name: "San Fran", zone: "America/Los_Angeles" },
-    { name: "Denver", zone: "America/Denver" },
-    { name: "Chicago", zone: "America/Chicago" },
-    { name: "NYC", zone: "America/New_York" },
-    { name: "London", zone: "Europe/London" },
-    { name: "Bangkok", zone: "Asia/Bangkok" }
-  ]
-};
-
 
 export default WorldClock;
