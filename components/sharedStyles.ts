@@ -1,10 +1,25 @@
 import styled from "@emotion/styled";
+import { ReactChild, ReactElement } from "react";
+
+interface ColorProps {
+  dimmed?: boolean
+  normal?: boolean
+  bright?: boolean
+}
 
 export const Colors = {
   dimmed: "#666",
   normal: "#999",
   bright: "#fff",
 };
+
+interface SizeProps {
+  xsmall?: boolean,
+  small?: boolean,
+  medium?: boolean,
+  large?: boolean,
+  xlarge?: boolean,
+}
 
 export const FontSize = {
   xsmall: "15px",
@@ -21,6 +36,13 @@ export const LineHeight = {
   large: "65px",
   xlarge: "75px",
 };
+
+interface WeightProps {
+  thin?: boolean
+  light?: boolean
+  regular?: boolean
+  bold?: boolean
+}
 
 export const Weight = {
   thin: 100,
@@ -41,12 +63,12 @@ export const Header = styled("div")`
   color: ${Colors.normal};
 `;
 
-const matchProps = (props = {}, opts = {}) => {
+const matchProps = (props = {}, opts = {}) : string => {
   const k = Object.keys(props).find((p) => opts.hasOwnProperty(p));
   return k ? opts[k] : "";
 };
 
-export const Span = styled("span")`
+export const Span = styled("span")<ColorProps & WeightProps & SizeProps>`
   font-family: "Rajdhani", sans-serif;
   color: ${(props) => matchProps(props, Colors)};
   fill: ${(props) => matchProps(props, Colors)};
@@ -55,7 +77,7 @@ export const Span = styled("span")`
   font-weight: ${(props) => matchProps(props, Weight)};
 `;
 
-export const Div = styled("div")`
+export const Div = styled("div")<ColorProps & WeightProps & SizeProps>`
   font-family: "Rajdhani", sans-serif;
   color: ${(props) => matchProps(props, Colors)};
   fill: ${(props) => matchProps(props, Colors)};
@@ -64,7 +86,11 @@ export const Div = styled("div")`
   font-weight: ${(props) => matchProps(props, Weight)};
 `;
 
-export const Sup = styled("sup")`
+interface SupProps {
+  width?: number
+}
+
+export const Sup = styled("sup")<SupProps & ColorProps>`
   font-family: "Rajdhani", sans-serif;
   color: ${(props) => matchProps(props, Colors)};
   width: ${({ width }) => (width ? width : "")};
@@ -86,7 +112,13 @@ export const Layer = styled(Div)`
   width: 100vw;
 `;
 
-export const Grid = styled("div")`
+interface GridProps {
+  cols?: string
+  gap?: number | string
+  children?: ReactElement[]
+}
+
+export const Grid = styled("div")<GridProps>`
   display: grid;
   grid-template-columns: ${({ cols }) => (cols ? cols : "auto 1fr 1fr")};
   column-gap: ${({ gap }) => (gap ? gap : "1em")};
