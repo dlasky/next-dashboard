@@ -4,6 +4,7 @@ import WorldClock from "../modules/WorldClock";
 import DateTime from "../modules/DateTime";
 import Holidays from "../modules/Holidays";
 import Pollen from "../modules/Pollen";
+import Weather from "../modules/Weather";
 
 const Content = styled("div")`
   font-family: "Rajdhani", sans-serif;
@@ -21,9 +22,9 @@ const Index = () => (
         <Pollen />
         {/* <Hue /> */}
       </Two>
-      <Two>{/*<R>
-          <Weather />
-        </R>*/}</Two>
+      <Two>
+        <Weather />
+      </Two>
       <Four>
         <WorldClock />
       </Four>

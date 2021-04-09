@@ -1,18 +1,18 @@
 import { Colors } from "../sharedStyles";
 
-  import  WiDaySunny from "./WiDaySunny"
-  import  WiDayCloudy from "./WiDayCloudy"
-  import WiNightClear from "./WiNightClear"
-  import WiNightCloudy from "./WiNightCloudy"
-  import WiSnow from "./WiSnow"
-  import WiRain from "./WiRain"
-  import WiFog from "./WiFog"
-  import WiRainMix from "./WiRainMix"
-  import WiCloudy from "./WiCloudy"
-  import WiCloudyGusts from "./WiCloudyGusts"
-  import WiHail from "./WiHail"
-  import WiThunderstorm from "./WiThunderstorm"
-  import WiTornado from "./WiTornado"
+import WiDaySunny from "./WiDaySunny";
+import WiDayCloudy from "./WiDayCloudy";
+import WiNightClear from "./WiNightClear";
+import WiNightCloudy from "./WiNightCloudy";
+import WiSnow from "./WiSnow";
+import WiRain from "./WiRain";
+import WiFog from "./WiFog";
+import WiRainMix from "./WiRainMix";
+import WiCloudy from "./WiCloudy";
+import WiCloudyGusts from "./WiCloudyGusts";
+import WiHail from "./WiHail";
+import WiThunderstorm from "./WiThunderstorm";
+import WiTornado from "./WiTornado";
 
 const conditions = {
   "clear-day": WiDaySunny,
@@ -27,22 +27,26 @@ const conditions = {
   "partly-cloudy-night": WiNightCloudy,
   hail: WiHail,
   thunderstorm: WiThunderstorm,
-  tornado: WiTornado
+  tornado: WiTornado,
 };
 
 interface Props {
-  condition?: string,
-  size?: string,
-  color?: string
+  condition?: string;
+  size?: string;
+  color?: string;
 }
 
-const Condition = ({ condition = "clear-day", size = "24px", color = Colors.normal }) => {
+const Condition = ({
+  condition = "clear-day",
+  size = "24px",
+  color = Colors.normal,
+}) => {
   const Symbol = conditions[condition];
-  return <Symbol size={size} color={color} />;
+  return <Symbol width={size} height={size} fill={color} />;
 };
 
 export const Enumerate = () =>
-  Object.keys(conditions).map(key => (
+  Object.keys(conditions).map((key) => (
     <span key={key}>
       {conditions[key]}
       {key}

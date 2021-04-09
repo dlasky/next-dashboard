@@ -1,9 +1,10 @@
 import ical from "ical";
 import axios from "axios";
+import { NextApiRequest, NextApiResponse } from "next";
 
 const url = "https://www.calendarlabs.com/ical-calendar/ics/76/US_Holidays.ics";
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const response = await axios.get(url);
     const data = ical.parseICS(response.data);
