@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { DateTime } from "luxon";
 import Condition from "../components/icons/Condition";
 import PrecipGraph from "../components/PrecipGraph";
-import { Grid, Span, Div, R } from "../components/sharedStyles";
+import { Grid, Span, Div, R, Colors } from "../components/sharedStyles";
 import Loader from "../components/Loader";
 import useApi from "../hooks/useApi";
 
@@ -34,7 +34,7 @@ const getMinMaxTemps = ({ daily }) =>
   );
 
 const RoundedBar = styled("div")`
-  background: #ccc;
+  background: ${Colors.default};
   border-radius: 30px;
   height: 20px;
 `;
@@ -43,7 +43,7 @@ const FixedGrid = styled(Grid)`
   width: 300px;
 `;
 
-const z = (num) => Math.max(num, 0);
+const z = (num: number): number => Math.max(num, 0);
 
 const Bar = ({ day, min, max, rowMax, rowMin }) => {
   const total = max - min;
@@ -79,14 +79,16 @@ const Weather = () => {
   return (
     <R>
       <Condition condition={hourly.icon} size="64px" />
-      <Span large>{temp}&deg;</Span>
+      <Span large normal>
+        {temp}&deg;
+      </Span>
       <Div>{minutely ? minutely.summary : hourly.summary}</Div>
       <PrecipGraph minutely={minutely} />
       <Grid cols="auto auto 1fr" gap="5px">
         {daily.data.map((day) => (
           <React.Fragment key={day.time}>
             <Span>{DateTime.fromMillis(day.time * 1000).toFormat("EEE")}</Span>
-            <Span normal>
+            <Span>
               <Condition condition={day.icon} />
             </Span>
             <Bar

@@ -3,11 +3,14 @@ import { DateTime } from "luxon";
 import styled from "@emotion/styled";
 import { Module, Sup, Div } from "../components/sharedStyles";
 import useRefresh from "../hooks/useRefresh";
+import toBool from "../util/toBool";
 
 const FixedSup = styled(Sup)`
   display: inline-block;
   min-width: 37px;
 `;
+
+const showSeconds = toBool(process.env.NEXT_PUBLIC_SHOW_SECONDS);
 
 const renderTimePart = ({ type, value }) => {
   switch (type) {
@@ -16,11 +19,11 @@ const renderTimePart = ({ type, value }) => {
     case "hour":
       return `${value}:`;
     case "second":
-      return (
+      return showSeconds ? (
         <FixedSup dimmed key="sec">
           {value}
         </FixedSup>
-      );
+      ) : null;
     case "literal":
       return "";
     case "dayPeriod":

@@ -8,7 +8,6 @@ const Pollen = () => {
     url: `/api/pollen/${process.env.NEXT_PUBLIC_ZIP}`,
     interval: "1 day",
   });
-  console.log(data);
   return (
     <Module>
       <Header>Pollen Forecast</Header>

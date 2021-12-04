@@ -1,4 +1,7 @@
 import { Global, css } from "@emotion/react";
+import toBool from "../util/toBool";
+
+const dark = toBool(process.env.NEXT_PUBLIC_DARK_MODE);
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -11,7 +14,7 @@ function MyApp({ Component, pageProps }) {
             margin: 0;
             padding: 0;
             font-family: sans-serif;
-            background: black;
+            background: ${dark ? "#000" : "#FFF"};
             overflow: hidden;
           }
         `}

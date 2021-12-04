@@ -1,5 +1,11 @@
 import styled from "@emotion/styled";
-import { ReactChild, ReactElement } from "react";
+import { ReactElement } from "react";
+import toBool from "../util/toBool";
+
+const dark = toBool(process.env.NEXT_PUBLIC_DARK_MODE);
+const chunky = toBool(process.env.NEXT_PUBLIC_CHUNKY_FONTS);
+
+console.log({ dark, chunky });
 
 interface ColorProps {
   dimmed?: boolean;
@@ -8,10 +14,13 @@ interface ColorProps {
 }
 
 export const Colors = {
-  dimmed: "#666",
-  normal: "#999",
-  bright: "#fff",
+  default: dark ? "#ccc" : "#000",
+  dimmed: dark ? "#666" : "#000",
+  normal: dark ? "#999" : "#000",
+  bright: dark ? "#fff" : "#000",
 };
+
+console.log(Colors);
 
 interface SizeProps {
   xsmall?: boolean;
@@ -45,8 +54,8 @@ interface WeightProps {
 }
 
 export const Weight = {
-  thin: 100,
-  light: 300,
+  thin: chunky ? 400 : 100,
+  light: chunky ? 400 : 300,
   regular: 400,
   bold: 700,
 };
@@ -56,7 +65,7 @@ export const Header = styled("div")`
   font-size: ${FontSize.xsmall};
   font-family: "Rajdhani", "Roboto Condensed", Arial, Helvetica, sans-serif;
   font-weight: 400;
-  border-bottom: 1px solid #666;
+  border-bottom: 1px solid ${Colors.dimmed};
   line-height: 15px;
   padding-bottom: 5px;
   margin-bottom: 10px;

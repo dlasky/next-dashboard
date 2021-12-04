@@ -1,8 +1,9 @@
 import WiRefresh from "./icons/WiRefresh";
 import styled from "@emotion/styled";
+import { Colors } from "./sharedStyles";
 
 const Load = styled(WiRefresh)`
-  fill: #ccc;
+  fill: ${Colors.default};
   animation-name: spin;
   animation-duration: 1000ms;
   animation-iteration-count: infinite;

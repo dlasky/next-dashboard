@@ -5,10 +5,11 @@ import DateTime from "../modules/DateTime";
 import Holidays from "../modules/Holidays";
 import Pollen from "../modules/Pollen";
 import Weather from "../modules/Weather";
+import { Colors } from "../components/sharedStyles";
 
 const Content = styled("div")`
   font-family: "Rajdhani", sans-serif;
-  color: #ccc;
+  color: ${Colors.default};
   padding: 20px 20px;
 `;
 

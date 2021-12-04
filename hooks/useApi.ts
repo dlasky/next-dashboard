@@ -20,7 +20,6 @@ const useApi = ({ url, interval }: ApiHookProps): ApiHook => {
   useEffect(() => {
     (async () => {
       const result = await axios.get(url);
-      console.log("res", result);
       setIsLoading(false);
       setData(result.data);
     })();
